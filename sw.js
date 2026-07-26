@@ -1,5 +1,5 @@
 // Naegememo Service Worker v8
-const CACHE_NAME = 'naegememo-shell-v8';
+const CACHE_NAME = 'naegememo-shell-v9';
 const SHELL_FILES = [
   './',
   './index.html',
