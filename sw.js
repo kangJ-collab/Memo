@@ -1,4 +1,4 @@
-const CACHE_NAME = 'naegemem-shell-v2';
+const CACHE_NAME = 'naegemem-shell-v3';
 const SHELL_FILES = [
   './','./index.html','./style.css','./app.js','./manifest.json',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png','./icons/apple-touch-icon.png'
