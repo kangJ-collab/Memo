@@ -1,7 +1,7 @@
 'use strict';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const KEY='naegememo-data-v1';
-const defaultState={version:1,notes:[],settings:{sort:'bottom',theme:'system',onboarded:false}};
+const defaultState={version:1,notes:[],settings:{sort:'bottom',theme:'light',onboarded:false}};
 let state=load(); let currentTab='main', archiveStatus='archived', detailId=null, composeMode='text', pendingRevisit=null, revisitContext={mode:'compose',noteId:null}, selectedRevisit=null, confirmAction=null;
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return x&&Array.isArray(x.notes)?{...defaultState,...x,settings:{...defaultState.settings,...x.settings}}:structuredClone(defaultState)}catch{return structuredClone(defaultState)}}
 function save(){localStorage.setItem(KEY,JSON.stringify(state))}
