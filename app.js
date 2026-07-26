@@ -56,6 +56,12 @@ let confirmAction = null;
 let pressTimer = null;
 let suppressClickUntil = 0;
 
+function syncAppHeight() {
+  const viewportHeight = window.visualViewport?.height || window.innerHeight;
+  if (!viewportHeight) return;
+  document.documentElement.style.setProperty("--app-height", `${Math.round(viewportHeight)}px`);
+}
+
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
@@ -1298,6 +1304,7 @@ function initializeEvents() {
 }
 
 function initialize() {
+  syncAppHeight();
   cleanupTrash();
   currentMode = state.settings.defaultMode;
   applySettings();
@@ -1310,6 +1317,11 @@ function initialize() {
     $("#onboarding").classList.add("show");
     $("#onboarding").setAttribute("aria-hidden", "false");
   }
+
+
+  window.addEventListener("resize", syncAppHeight, { passive: true });
+  window.addEventListener("orientationchange", () => setTimeout(syncAppHeight, 120), { passive: true });
+  window.visualViewport?.addEventListener("resize", syncAppHeight, { passive: true });
 
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
