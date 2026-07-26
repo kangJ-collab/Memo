@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>나에게 메모</title>
+<meta name="theme-color" content="#2E7A6E">
+<meta name="description" content="생각나는 건 채팅처럼 적고, 필요할 때 메모처럼 찾는다.">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.2"/><line x1="20" y1="20" x2="15.3" y2="15.3"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.5a7 7 0 0 0-2 1.2l-2.4-.9-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.5a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.6c.07-.4.1-.8.1-1.2Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="6"/><polyline points="6 11 12 5 18 11"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M8 4h8l-1 6 3 3v2H6v-2l3-3-1-6Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 16 5.5 18.5a3.2 3.2 0 0 1-4.5-4.5L4 11"/><path d="M16 8l2.5-2.5a3.2 3.2 0 0 1 4.5 4.5L20 13"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9.5 18 20 6"/></symbol>
+  <symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="4" rx="1"/><path d="M5 9v9a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 18V9"/><line x1="10" y1="13" x2="14" y2="13"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3Z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.3"/><circle cx="6" cy="12" r="2.3"/><circle cx="18" cy="19" r="2.3"/><line x1="8" y1="10.8" x2="16" y2="6.2"/><line x1="8" y1="13.2" x2="16" y2="17.8"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4.8A1.8 1.8 0 0 1 10.8 3h2.4A1.8 1.8 0 0 1 15 4.8V7"/><path d="M6 7l1 13a1.7 1.7 0 0 0 1.7 1.5h6.6A1.7 1.7 0 0 0 17 20L18 7"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4h9l5 5v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/><path d="M14 4v5h5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><polyline points="7 11 12 16 17 11"/><path d="M5 19h14"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V9"/><polyline points="7 13 12 8 17 13"/><path d="M5 19h14"/></symbol>
+  <symbol id="i-clist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="4" width="6" height="6" rx="1.3"/><path d="M5.5 7l1.2 1.2L8.5 6"/><line x1="12.5" y1="6.5" x2="20.5" y2="6.5"/><rect x="3.5" y="14" width="6" height="6" rx="1.3"/><line x1="12.5" y1="16.5" x2="20.5" y2="16.5"/></symbol>
+</svg>
+<div id="app-frame">
+  <div id="onboarding">
+    <div class="statusbar-spacer"></div>
+    <div class="center-flex">
+      <div class="blob"><svg width="46" height="46"><use href="#i-note"/></svg></div>
+      <div class="onb-title">생각나는 건 바로 적어두세요.<br>정리는 나중에 해도 됩니다.</div>
+      <div class="onb-sub">제목도, 폴더도, 카테고리도 필요 없어요.<br>떠오르는 대로 적으면 그걸로 끝이에요.</div>
+      <button id="btn-onb-start" class="cta-btn">메모 시작하기</button>
+    </div>
+  </div>
+
+  <div id="stack-tabs">
+    <section class="tabview active" id="view-main">
+      <div class="statusbar-spacer"></div>
+      <header class="topbar"><div class="topbar-row"><div class="app-title">나에게 메모</div><button id="btn-settings-open" class="icon-btn" aria-label="설정 열기"><svg width="19" height="19"><use href="#i-settings"/></svg></button></div><button id="btn-open-search" class="search-bar"><svg width="16" height="16"><use href="#i-search"/></svg><span>메모, 링크 검색</span></button></header>
+      <div class="pinned-wrap hidden" id="pinned-wrap"><div class="pinned-head"><span class="t"><svg width="11" height="11"><use href="#i-pin"/></svg>고정된 메모 <span id="pinned-count">0</span></span><button class="more" id="btn-pinned-all">전체보기 ›</button></div><div class="pinned-scroll" id="pinned-scroll"></div></div>
+      <main class="timeline" id="timeline-main"></main>
+      <div class="compose">
+        <div class="compose-mode-chip hidden" id="compose-mode-chip"><svg width="13" height="13"><use href="#i-clist"/></svg><span>체크리스트 작성 중</span><button id="btn-clear-compose-mode" aria-label="체크리스트 모드 해제"><svg width="13" height="13"><use href="#i-close"/></svg></button></div>
+        <div class="pending-revisit-chip hidden" id="pending-revisit-chip"><svg width="13" height="13"><use href="#i-clock"/></svg><span id="pending-revisit-label"></span><button id="btn-clear-pending-revisit" aria-label="다시 보기 설정 제거"><svg width="13" height="13"><use href="#i-close"/></svg></button></div>
+        <div class="attach-panel" id="attach-panel"><div class="attach-panel-inner"><button class="attach-item" id="attach-checklist"><span class="ic"><svg width="17" height="17"><use href="#i-clist"/></svg></span>체크리스트</button><button class="attach-item" id="attach-revisit"><span class="ic"><svg width="17" height="17"><use href="#i-clock"/></svg></span>다시 보기</button></div></div>
+        <div class="input-bar"><button class="plus-btn" id="btn-attach-toggle" aria-label="추가 메뉴"><svg width="16" height="16"><use href="#i-plus"/></svg></button><textarea class="text-field" id="compose-input" placeholder="무엇이든 적어두세요…" rows="1"></textarea><button class="send-btn" id="btn-send" disabled aria-label="메모 저장"><svg width="15" height="15"><use href="#i-send"/></svg></button></div>
+      </div>
+      <nav class="bottom-nav"><button class="nav-item active" data-tab="main"><svg width="19" height="19"><use href="#i-note"/></svg>메모</button><button class="nav-item" data-tab="revisit"><svg width="19" height="19"><use href="#i-clock"/></svg>다시 보기<span class="nav-badge hidden" id="nav-badge-revisit">0</span></button><button class="nav-item" data-tab="archive"><svg width="19" height="19"><use href="#i-archive"/></svg>보관함</button></nav>
+    </section>
+
+    <section class="tabview" id="view-revisit" style="display:none"><div class="statusbar-spacer"></div><header class="topbar"><div class="topbar-row"><div class="app-title">다시 보기</div></div></header><main class="timeline" id="timeline-revisit"></main><nav class="bottom-nav"><button class="nav-item" data-tab="main"><svg width="19" height="19"><use href="#i-note"/></svg>메모</button><button class="nav-item active" data-tab="revisit"><svg width="19" height="19"><use href="#i-clock"/></svg>다시 보기</button><button class="nav-item" data-tab="archive"><svg width="19" height="19"><use href="#i-archive"/></svg>보관함</button></nav></section>
+
+    <section class="tabview" id="view-archive" style="display:none"><div class="statusbar-spacer"></div><header class="topbar"><div class="topbar-row"><div class="app-title">보관함</div></div></header><div class="segment" id="archive-segment"><button class="seg-item active" data-status="archived">보관 <span id="cnt-archived">0</span></button><button class="seg-item" data-status="completed">완료 <span id="cnt-completed">0</span></button><button class="seg-item" data-status="trashed">휴지통 <span id="cnt-trashed">0</span></button></div><div class="section-caption" id="archive-caption">나중에 다시 필요할 수 있는 정보</div><main class="timeline" id="timeline-archive"></main><nav class="bottom-nav"><button class="nav-item" data-tab="main"><svg width="19" height="19"><use href="#i-note"/></svg>메모</button><button class="nav-item" data-tab="revisit"><svg width="19" height="19"><use href="#i-clock"/></svg>다시 보기</button><button class="nav-item active" data-tab="archive"><svg width="19" height="19"><use href="#i-archive"/></svg>보관함</button></nav></section>
+  </div>
+
+  <section class="overlay-screen" id="view-detail"><div class="statusbar-spacer"></div><header class="screen-header between"><button class="icon-btn" id="btn-detail-back" aria-label="뒤로"><svg width="19" height="19"><use href="#i-back"/></svg></button><div><button class="icon-btn" id="btn-detail-pin" aria-label="고정"><svg width="18" height="18"><use href="#i-pin"/></svg></button><button class="icon-btn" id="btn-detail-more" aria-label="더보기"><svg width="19" height="19"><use href="#i-more"/></svg></button></div></header><div class="detail-body"><div class="detail-text" id="detail-text"></div><textarea class="text-field hidden" id="detail-edit-input"></textarea><div class="detail-meta" id="detail-meta"></div></div><div id="detail-edit-actions" class="detail-edit-actions hidden"><button id="btn-detail-cancel">취소</button><button id="btn-detail-save">저장</button></div><div class="action-grid" id="detail-action-grid"></div></section>
+
+  <section class="overlay-screen" id="view-search"><div class="statusbar-spacer"></div><header class="topbar"><div class="topbar-row search-head"><button class="icon-btn" id="btn-search-back" aria-label="뒤로"><svg width="19" height="19"><use href="#i-back"/></svg></button><div class="search-bar"><svg width="16" height="16"><use href="#i-search"/></svg><input id="search-input" type="text" placeholder="기억나는 단어를 입력해 보세요" autocomplete="off"></div></div></header><div class="filter-row" id="filter-type"><button class="filter-chip active" data-type="all">전체</button><button class="filter-chip" data-type="text">일반 메모</button><button class="filter-chip" data-type="link">링크</button><button class="filter-chip" data-type="checklist">체크리스트</button></div><div class="filter-row" id="filter-date"><button class="filter-chip active" data-range="all">전체 기간</button><button class="filter-chip" data-range="today">오늘</button><button class="filter-chip" data-range="7d">최근 7일</button><button class="filter-chip" data-range="month">이번 달</button></div><main class="timeline" id="search-results"></main></section>
+
+  <section class="overlay-screen" id="view-pinned-all"><div class="statusbar-spacer"></div><header class="screen-header"><button class="icon-btn" id="btn-pinnedall-back" aria-label="뒤로"><svg width="19" height="19"><use href="#i-back"/></svg></button><div class="title">고정된 메모</div></header><main class="timeline" id="pinned-all-list"></main></section>
+
+  <section class="overlay-screen" id="view-settings"><div class="statusbar-spacer"></div><header class="screen-header"><button class="icon-btn" id="btn-settings-back" aria-label="뒤로"><svg width="19" height="19"><use href="#i-back"/></svg></button><div class="title">설정</div></header><main class="timeline"><div class="settings-group"><div class="settings-row"><div><div class="label">새 메모 정렬</div><div class="desc">채팅처럼 아래에 쌓을지, 최신순으로 위에 둘지 선택해요</div></div></div><div class="settings-row"><div class="seg-mini" id="seg-sort"><button data-sort="bottom">최신 아래</button><button data-sort="top">최신 위</button></div></div></div><div class="settings-group"><div class="settings-row"><div><div class="label">화면 모드</div><div class="desc">기기 설정을 따르거나 직접 선택할 수 있어요</div></div></div><div class="settings-row"><div class="seg-mini" id="seg-theme"><button data-theme="system">시스템</button><button data-theme="light">라이트</button><button data-theme="dark">다크</button></div></div></div><div class="settings-group"><button class="settings-row" id="btn-backup"><div><div class="label">백업 파일 내보내기</div><div class="desc">모든 메모를 JSON 파일로 저장해요</div></div><svg width="18" height="18"><use href="#i-download"/></svg></button><button class="settings-row" id="btn-restore"><div><div class="label">백업 파일에서 복원</div><div class="desc">현재 데이터를 백업 파일의 내용으로 교체해요</div></div><svg width="18" height="18"><use href="#i-upload"/></svg></button><input type="file" id="restore-file-input" accept="application/json" class="hidden"></div><div class="settings-note">휴지통의 메모는 30일이 지나면 앱을 실행할 때 자동 삭제됩니다.</div><div class="settings-group"><button class="settings-row" id="btn-replay-onboarding"><div class="label">시작 안내 다시 보기</div></button></div></main></section>
+
+  <div class="sheet-overlay" id="sheet-quickmenu" aria-hidden="true"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-title" id="quickmenu-preview"></div><div id="quickmenu-items"></div></div></div>
+  <div class="sheet-overlay" id="sheet-revisit" aria-hidden="true"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-title">언제 다시 볼까요?</div><div class="pill-row"><button class="pill" data-quick="tonight">오늘 저녁</button><button class="pill" data-quick="tomorrow">내일</button><button class="pill" data-quick="weekend">이번 주말</button></div><label class="custom-row"><span>날짜와 시간 직접 선택</span><input type="datetime-local" id="revisit-custom-input"></label><button class="confirm-btn" id="btn-revisit-confirm" disabled>다시 보기로 설정</button></div></div>
+  <div class="modal-overlay" id="modal-confirm" aria-hidden="true"><div class="modal-box"><div class="m-title" id="modal-title"></div><div class="m-desc" id="modal-desc"></div><div class="modal-actions"><button class="cancel" id="modal-cancel">취소</button><button class="confirm" id="modal-confirm-btn">확인</button></div></div></div>
+  <div id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
