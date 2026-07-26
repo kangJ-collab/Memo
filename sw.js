@@ -1,4 +1,4 @@
-// Naegememo Service Worker v8
+// Naegememo Service Worker v9
 const CACHE_NAME = 'naegememo-shell-v9';
 const SHELL_FILES = [
   './',
