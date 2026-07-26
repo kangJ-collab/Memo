@@ -1,9 +1,9 @@
-// 나에게 메모 — Service Worker v5
-const CACHE_NAME = 'naegememo-shell-v5';
+const CACHE_NAME = 'naegememo-shell-v7';
 const SHELL_FILES = [
   './',
   './index.html',
   './style.css',
+  './lang-ko.js',
   './app.js',
   './manifest.json',
   './icons/icon-192.png',
@@ -28,7 +28,6 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') return;
-
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
